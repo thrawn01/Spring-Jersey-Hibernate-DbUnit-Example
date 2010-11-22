@@ -1,0 +1,20 @@
+An example of using Spring 3.0 with Jersey and JPA EntityManager w/ Hibernate 
+and DbUnit as the Unit testing framework
+
+== How to run the unit tests ==
+mvn test
+
+== How do I run the tnit tests under Eclipse ==
+Short Answer
+    Add the target/test-classes to the class path
+
+Long Answer
+    Try running the Unit Tests first. Right Click on the project in eclipse and select 'Run As' > 'JUnit Test'
+    After the test fails. Click 'Run' > 'Run Configurations...' and select 'Spring-Jersey-JPA-DbUnit-Example'
+    Click on the 'Classpath' tab, and in the Classpath view, select 'User Entries'. Click the 'Advanced' button
+    in the dialog box, select 'Add Folders' and click 'OK'. In the next dialog box, Naviage to 
+    'Spring-Jersy-JPA-DbUnit-Example > target' and select the directory 'test-classes' and press the 'OK' button
+
+    Now Apply and 'Run' and the unit tests should run fine.
+
+
