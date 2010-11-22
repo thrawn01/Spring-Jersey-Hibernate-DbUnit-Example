@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- Scan for Jersey Rest Annotations and Spring Annotations -->
+	<context:component-scan base-package="com.persistent.rest,com.persistent.service,com.persistent.service.jpa" />
+	<context:annotation-config />
+	<tx:annotation-driven />
+	
+	<!--  Using dbcp (Data Base Connection Pooling) suitable for production use -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:jerseySpringJpa"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <!-- JPA Entity Manager -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+			p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaAdapter">
+	</bean>
+	
+	<!-- Entity Operations are Managed by this TransactionManager -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
+	
+	<!--  Using Hibernate Implementation of JPA-->
+	<bean id="jpaAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+		p:database="HSQL" p:showSql="true" />
+</beans>
+
+
