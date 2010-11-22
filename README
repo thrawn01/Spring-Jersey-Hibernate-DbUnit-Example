@@ -4,7 +4,7 @@ and DbUnit as the Unit testing framework
 == How to run the unit tests ==
 mvn test
 
-== How do I run the tnit tests under Eclipse ==
+== How do I run the unit tests under Eclipse ==
 Short Answer
     Add the target/test-classes to the class path
 
