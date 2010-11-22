@@ -9,11 +9,13 @@ Short Answer
     Add the target/test-classes to the class path
 
 Long Answer
-    Try running the Unit Tests first. Right Click on the project in eclipse and select 'Run As' > 'JUnit Test'
-    After the test fails. Click 'Run' > 'Run Configurations...' and select 'Spring-Jersey-JPA-DbUnit-Example'
-    Click on the 'Classpath' tab, and in the Classpath view, select 'User Entries'. Click the 'Advanced' button
-    in the dialog box, select 'Add Folders' and click 'OK'. In the next dialog box, Naviage to 
-    'Spring-Jersy-JPA-DbUnit-Example > target' and select the directory 'test-classes' and press the 'OK' button
+    Try running the Unit Tests first. Right Click on the project in eclipse and select
+    'Run As' > 'JUnit Test' After the test fails. Click 'Run' > 'Run Configurations...' 
+    and select 'Spring-Jersey-JPA-DbUnit-Example' Click on the 'Classpath' tab, and in
+    the Classpath view, select 'User Entries'. Click the 'Advanced' button in the dialog
+    box, select 'Add Folders' and click 'OK'. In the next dialog box, Naviage to 
+    'Spring-Jersy-JPA-DbUnit-Example > target' and select the directory 'test-classes'
+    and press the 'OK' button
 
     Now Apply and 'Run' and the unit tests should run fine.
 
