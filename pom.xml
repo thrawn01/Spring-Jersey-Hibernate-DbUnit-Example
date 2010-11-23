@@ -52,6 +52,11 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.test</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
 
 		<!-- Jersey -->
 		<dependency>
@@ -69,8 +74,8 @@
 			<groupId>com.sun.jersey.contribs</groupId>
 			<artifactId>jersey-spring</artifactId>
 			<version>${jersey.version}</version>
-			<!--  These exclusions keep jersey-spring dependencies on 
-				  spring 2.0 from getting resolved by maven -->
+			<!-- These exclusions keep jersey-spring dependencies on spring 2.0 from 
+				getting resolved by maven -->
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>
@@ -134,14 +139,14 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>3.6.0.Final</version>
 		</dependency>
-		
+
 		<!-- In Memory Database -->
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>1.8.0.10</version>
 		</dependency>
-		
+
 		<!-- This is LAST because of a Spring Bug when running Unit Tests See https://jira.springframework.org/browse/SPR-6408 
 			for details -->
 		<dependency>
