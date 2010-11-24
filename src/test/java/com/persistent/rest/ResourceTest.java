@@ -1,7 +1,5 @@
 package com.persistent.rest;
 
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 import com.meterware.httpunit.WebResponse;

@@ -18,12 +18,14 @@ public class DatabaseUtil {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
+	//TODO: Remove
 	public void printProperties(){
 		Map<String, Object> result = entityManager.getProperties(); 
 		System.out.println(result.toString());
 	}
 	
-    public static void setupTables(final Connection connection, final Class[] classes, final Dialect dialect) throws SQLException {
+	@SuppressWarnings("rawtypes")
+    public void setupTables(final Connection connection, final Class[] classes, final Dialect dialect) throws SQLException {
 
         try {
             executeSql(connection, generateDropStatements(classes, dialect));
@@ -38,7 +40,8 @@ public class DatabaseUtil {
         catch (final SQLException se) { }
     }
     
-    public static String generateDropStatements(final Class[] classes, final Dialect dialect) {
+    @SuppressWarnings("rawtypes")
+	public String generateDropStatements(final Class[] classes, final Dialect dialect) {
         final Configuration cfg = new Configuration();
         for(int i=0; i < classes.length; i++) {
             cfg.addAnnotatedClass(classes[i]);
@@ -52,7 +55,8 @@ public class DatabaseUtil {
         return createSql;
     }
     
-    public static String generateSchemas(final Class[] classes, final Dialect dialect) {
+    @SuppressWarnings("rawtypes")
+    public String generateSchemas(final Class[] classes, final Dialect dialect) {
         final Configuration cfg = new Configuration();
         for(int i=0; i < classes.length; i++) {
             cfg.addAnnotatedClass(classes[i]);
@@ -66,7 +70,7 @@ public class DatabaseUtil {
         return createSql;
     }
     
-    public static void executeSql(final Connection connection, final String sql) throws SQLException {
+    public void executeSql(final Connection connection, final String sql) throws SQLException {
         final Statement statement = connection.createStatement();
         statement.execute(sql);
     }

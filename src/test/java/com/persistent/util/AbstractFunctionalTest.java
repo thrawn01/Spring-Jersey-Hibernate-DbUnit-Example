@@ -40,10 +40,10 @@ public abstract class AbstractFunctionalTest extends AbstractJUnit4SpringContext
 	
 	// Ask Hibernate to create the tables in the database
 	public void createTables( Class[] classes ){
-		final String dropStatements = DatabaseUtil.generateDropStatements(classes, new PostgreSQLDialect());
-        final String createStatements = DatabaseUtil.generateSchemas(classes, new PostgreSQLDialect());
-        //DatabaseUtil.executeSql(connection, dropStatements)
-        //DatabaseUtil.executeSql(connection, createStatements)
+		final String dropStatements = dbUtil.generateDropStatements(classes, new PostgreSQLDialect());
+        final String createStatements = dbUtil.generateSchemas(classes, new PostgreSQLDialect());
+        //dbUtil.executeSql(connection, dropStatements)
+        //dbUtil.executeSql(connection, createStatements)
 	}
 	
 }
