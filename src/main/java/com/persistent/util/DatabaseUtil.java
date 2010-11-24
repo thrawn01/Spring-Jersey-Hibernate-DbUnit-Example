@@ -8,20 +8,21 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.Dialect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("databaseUtil")
 public class DatabaseUtil {
 	
-	@PersistenceContext
-	protected EntityManager entityManager;
+	@Autowired
+	protected SessionFactory sessionFactory;
 	
-	//TODO: Remove
+	//TODO: Remove ( Only for testing )
 	public void printProperties(){
-		Map<String, Object> result = entityManager.getProperties(); 
-		System.out.println(result.toString());
+		System.out.println(sessionFactory.toString());
 	}
 	
 	@SuppressWarnings("rawtypes")

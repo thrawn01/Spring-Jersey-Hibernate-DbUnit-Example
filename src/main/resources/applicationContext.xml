@@ -16,27 +16,33 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 	
+	<!-- Where the properties files live -->
+	<context:property-placeholder location="classpath*:/*.properties"/>
+	
 	<!--  Using dbcp (Data Base Connection Pooling) suitable for production use -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:mem:jerseySpringJpa"/>
-        <property name="username" value="sa"/>
-        <property name="password" value=""/>
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
     </bean>
-
-    <!-- JPA Entity Manager -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-			p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaAdapter">
-	</bean>
-	
-	<!-- Entity Operations are Managed by this TransactionManager -->
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-		p:entityManagerFactory-ref="entityManagerFactory" />
-	
-	<!--  Using Hibernate Implementation of JPA-->
-	<bean id="jpaAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-		p:database="HSQL" p:showSql="true" />
+ 
+    <bean id="sessionFactory"
+        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${database.dialect}</prop>
+                <prop key="hibernate.show_sql">${database.show_sql}</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
 
 
