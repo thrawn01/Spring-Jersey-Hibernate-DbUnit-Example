@@ -1,5 +1,4 @@
-An example of using Spring 3.0 with Jersey and JPA EntityManager w/ Hibernate 
-and DbUnit as the Unit testing framework
+An example of using Spring 3.0 with Jersey, Hibernate and DbUnit 
 
 == How to run the unit tests ==
 mvn test
