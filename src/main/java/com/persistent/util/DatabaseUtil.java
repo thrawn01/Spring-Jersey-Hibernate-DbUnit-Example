@@ -39,7 +39,7 @@ public class DatabaseUtil {
 	@Transactional
     public void createTables(final Class[] classes) throws SQLException {
 		
-		// Bypass the interface to the implementation to access the Hibernate config properties
+		// Bypass the interface to access the Hibernate config properties
 		final Properties properties =((SessionFactoryImpl)sessionFactory).getProperties();
 		final Dialect dialect = DialectFactory.buildDialect(properties);
 		
