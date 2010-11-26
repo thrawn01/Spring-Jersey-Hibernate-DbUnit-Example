@@ -1,16 +1,19 @@
 package com.persistent.rest;
 
+import java.sql.SQLException;
+
 import org.junit.Before;
 import org.junit.Test;
 import com.meterware.httpunit.WebResponse;
+import com.persistent.entity.Person;
 import com.persistent.util.AbstractFunctionalTest;
 
 
 public class ResourceTest extends AbstractFunctionalTest {
 	
 	@Before
-	public void setUp(){
-		dbUtil.printProperties();
+	public void setUp() throws SQLException{
+		dbUtil.createTables( new Class[] { Person.class } );
 	}
 	
 	@Test
