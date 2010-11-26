@@ -7,7 +7,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PERSON")
+@Table(name = "persons")
 @NamedQueries( { @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
 				@NamedQuery(name = "Person.findPerson", query = "SELECT p FROM Person p where p.name=:name and p.age=:age")
 	})

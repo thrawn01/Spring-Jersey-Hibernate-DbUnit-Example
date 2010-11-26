@@ -14,6 +14,7 @@ public class ResourceTest extends AbstractFunctionalTest {
 	@Before
 	public void setUp() throws SQLException{
 		dbUtil.createTables( new Class[] { Person.class } );
+		dbUtil.loadData("src/test/resources/test-dataset");
 	}
 	
 	@Test
