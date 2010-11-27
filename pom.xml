@@ -154,6 +154,13 @@
 			<version>1.6.1</version>
 		</dependency>
 		
+		<!--  Jersey Support for JSON, XML support is built in -->
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-json</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+		
 		<!--  This is LAST for a reason, dbunit dependencies load older
 		      versions of log4j which causes issues with spring bean loader -->
 		<dependency>

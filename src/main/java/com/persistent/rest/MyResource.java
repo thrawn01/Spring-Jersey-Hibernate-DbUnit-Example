@@ -21,6 +21,8 @@ public class MyResource {
 	@Autowired
 	SessionFactory sessionFactory;
 	
+	//@Produces({"application/json","application/xml"})
+	
 	@GET
     @Transactional
 	@Produces("text/plain")
