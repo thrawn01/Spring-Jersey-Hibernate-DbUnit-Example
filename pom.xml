@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.persistent</groupId>
-	<artifactId>jerseySpringJpa</artifactId>
+	<artifactId>jerseySpringHibernateDbUnit</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Jersey Spring JPA Demo</name>
+	<name>Jersey Spring Hibernate DbUnit Demo</name>
 
 	<build>
 		<!-- <finalName>jerseySpringJPA</finalName> -->
