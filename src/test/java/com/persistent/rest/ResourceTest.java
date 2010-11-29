@@ -23,7 +23,7 @@ public class ResourceTest extends AbstractFunctionalTest {
 	
 	@Test
 	public void testFoo() throws Exception {
-		WebResponse response = getClient().getResponse("http://localhost/webresources/myresource");
+		WebResponse response = getClient().getResponse("http://localhost/webresources/persons");
 		System.out.println(response.getText());
 	}
 }

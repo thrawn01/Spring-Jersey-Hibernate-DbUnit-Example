@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "person")
-@XmlRootElement(name = "ticket")
+@XmlRootElement(name = "person")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "person", propOrder = { "id", "name", "age" })
 public class Person {
