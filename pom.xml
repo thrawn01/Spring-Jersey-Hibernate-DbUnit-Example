@@ -134,7 +134,12 @@
 			<artifactId>org.springframework.orm</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.0.Final</version>
+		</dependency>
+		
 		<!-- In Memory Database -->
 		<dependency>
 			<groupId>hsqldb</groupId>
@@ -148,23 +153,23 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		
-		<!--  Jersey Support for JSON, XML support is built in -->
+
+		<!-- Jersey Support for JSON, XML support is built in -->
 		<dependency>
-		    <groupId>com.sun.jersey</groupId>
-		    <artifactId>jersey-json</artifactId>
-		    <version>${jersey.version}</version>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey.version}</version>
 		</dependency>
-		
-		<!--  This is LAST for a reason, dbunit dependencies load older
-		      versions of log4j which causes issues with spring bean loader -->
+
+		<!-- This is LAST for a reason, dbunit dependencies load older versions 
+			of log4j which causes issues with spring bean loader -->
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>2.4.8</version>
 		</dependency>
 
-		
+
 
 	</dependencies>
 
