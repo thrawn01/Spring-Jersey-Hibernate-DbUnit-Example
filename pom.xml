@@ -134,11 +134,6 @@
 			<artifactId>org.springframework.orm</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.6.0.Final</version>
-		</dependency>
 
 		<!-- In Memory Database -->
 		<dependency>
