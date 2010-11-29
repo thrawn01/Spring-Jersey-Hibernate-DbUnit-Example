@@ -2,15 +2,17 @@ package com.persistent.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
-@Table(name = "persons")
-@NamedQueries( { @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
-				@NamedQuery(name = "Person.findPerson", query = "SELECT p FROM Person p where p.name=:name and p.age=:age")
-	})
+@Table(name = "person")
+@XmlRootElement(name = "ticket")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "person", propOrder = { "id", "name", "age" })
 public class Person {
 	private int id;
 	private String name;
