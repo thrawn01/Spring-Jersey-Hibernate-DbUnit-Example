@@ -23,7 +23,16 @@ public class ResourceTest extends AbstractFunctionalTest {
 	
 	@Test
 	public void testFoo() throws Exception {
+		
 		WebResponse response = getClient().getResponse("http://localhost/webresources/persons");
+		
+		// Validate our XML Contains "Derrick Wippler"
+		assertHasValue(response.getDOM(), "/persons/person[id=1]/id/text()", "1");
+		assertHasValue(response.getDOM(), "/persons/person[id=1]/name/text()", "Derrick Wippler");
+		assertHasValue(response.getDOM(), "/persons/person[id=1]/age/text()", "32");
+
+		// Just Because =)
 		System.out.println(response.getText());
 	}
+	
 }

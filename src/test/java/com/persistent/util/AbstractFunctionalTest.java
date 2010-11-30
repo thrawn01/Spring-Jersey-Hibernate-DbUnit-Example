@@ -1,15 +1,27 @@
 package com.persistent.util;
 
+import static junit.framework.Assert.fail;
+
 import java.io.File;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.meterware.servletunit.ServletRunner;
 import com.meterware.servletunit.ServletUnitClient;
 import com.persistent.util.DatabaseUtil;
-import org.hibernate.dialect.PostgreSQLDialect;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 //import org.hibernate.engine.ExecuteUpdateResultCheckStyle;
 
@@ -20,6 +32,11 @@ public abstract class AbstractFunctionalTest extends AbstractJUnit4SpringContext
 	
 	private ServletRunner servletRunner;
     private ServletUnitClient client;
+	private final static XPath xPath;
+    
+    static {
+        xPath = XPathFactory.newInstance().newXPath();
+    }
     
     @Autowired
 	protected DatabaseUtil dbUtil;
@@ -38,12 +55,24 @@ public abstract class AbstractFunctionalTest extends AbstractJUnit4SpringContext
 		return client;
 	}
 	
-	// Ask Hibernate to create the tables in the database
-	public void createTables( Class[] classes ){
-		final String dropStatements = dbUtil.generateDropStatements(classes, new PostgreSQLDialect());
-        final String createStatements = dbUtil.generateSchemas(classes, new PostgreSQLDialect());
-        //dbUtil.executeSql(connection, dropStatements)
-        //dbUtil.executeSql(connection, createStatements)
-	}
-	
+	public void assertHasValue(Document document, String xPathExpression, String value) throws Exception {
+        NodeList nodeList = (NodeList) xPath.evaluate(xPathExpression, document, XPathConstants.NODESET);
+        
+        // verify the node values
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            String nodeValue = nodeList.item(i).getNodeValue();
+            
+            if (value.equals(nodeValue)) {
+                return;
+            }
+        }
+        
+        // assertion failed, so build a set of values for the response.
+        List<String> values = new ArrayList<String>();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            values.add(nodeList.item(i).getNodeValue());
+        }
+        
+        fail(MessageFormat.format("Document does not have a node with value: {0} at {1}, values: {2}", value, xPathExpression, values));
+    }
 }
