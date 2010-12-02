@@ -27,9 +27,9 @@ public class ResourceTest extends AbstractFunctionalTest {
 		WebResponse response = getClient().getResponse("http://localhost/webresources/persons");
 		
 		// Validate our XML Contains "Derrick Wippler"
-		assertHasValue(response.getDOM(), "/persons/person[id=1]/id/text()", "1");
-		assertHasValue(response.getDOM(), "/persons/person[id=1]/name/text()", "Derrick Wippler");
-		assertHasValue(response.getDOM(), "/persons/person[id=1]/age/text()", "32");
+		xmlUtil.assertHasValue(response.getDOM(), "/persons/person[id=1]/id/text()", "1");
+		xmlUtil.assertHasValue(response.getDOM(), "/persons/person[id=1]/name/text()", "Derrick Wippler");
+		xmlUtil.assertHasValue(response.getDOM(), "/persons/person[id=1]/age/text()", "32");
 
 		// Just Because =)
 		System.out.println(response.getText());
