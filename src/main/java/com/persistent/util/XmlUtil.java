@@ -22,7 +22,7 @@ public class XmlUtil {
 	private JAXBContext context;
     private SchemaFactory schemaFactory;
 	    
-	XmlUtil() throws JAXBException {
+	public XmlUtil() throws JAXBException {
 	    context = JAXBContext.newInstance( "com.persistent.entity" );
 	    schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 	}
