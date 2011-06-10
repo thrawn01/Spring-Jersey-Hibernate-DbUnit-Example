@@ -32,7 +32,7 @@ public class ResourceTest extends AbstractFunctionalTest {
 		xmlUtil.assertHasValue(response.getDOM(), "/persons/person[id=1]/age/text()", "32");
 
 		// Just Because =)
-		System.out.println(response.getText());
+		System.out.println(formatXml(response.getText()));
 	}
 	
 }
