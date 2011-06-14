@@ -38,6 +38,7 @@
             <props>
                 <prop key="hibernate.dialect">${database.dialect}</prop>
                 <prop key="hibernate.show_sql">${database.show_sql}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${database.hbm2ddl.auto}</prop>
             </props>
         </property>
     </bean>
