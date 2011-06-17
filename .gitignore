@@ -6,3 +6,4 @@ target/
 .class/
 ._*
 .idea
+*.iml
