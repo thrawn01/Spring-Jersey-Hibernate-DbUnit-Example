@@ -209,10 +209,10 @@
             <artifactId>guava</artifactId>
             <version>r08</version>
         </dependency>
-            <dependency>
-            <groupId>org.apache.abdera</groupId>
-            <artifactId>abdera-client</artifactId>
-            <version>1.1.2</version>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-atom-abdera</artifactId>
+            <version>1.7</version>
         </dependency>
     </dependencies>
 
